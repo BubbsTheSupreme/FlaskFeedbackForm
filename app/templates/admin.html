@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <center>
+        <h1>FEEDBACK</h1>
+        <form action="/logout" method="post">
+            <input type="submit" value="Submit">
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>EMAIL</th>
+                    <th>FEEDBACK</th>
+                </tr>
+            </thead>
+            {% for f in feedback %}
+                <tr>
+                    <th>{{ f.id }}</th>
+                    <th>{{ f.first_name }}</th>
+                    <th>{{ f.last_name }}</th>
+                    <th>{{ f.email }}</th>
+                    <th>{{ f.feedback }}</th>
+                </tr>
+            {% endfor %}
+        </table>
+    </center>
+{% endblock %}

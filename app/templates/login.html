@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+
+    <center>
+        <h1>Login</h1>
+
+        <div id="login">
+            <form action="/login" method="post">
+                {{ form.csrf_token }}
+                <p>
+                    {{ form.email.label }}
+                    {{ form.email(size=32) }}
+                    {% if form.email.errors %}
+                        {% for err in form.email.errors %}
+                            <p>{{ err }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+                <p>
+                    {{ form.password.label }}
+                    {{ form.password(size=32) }}
+                    {% if form.password.errors %}
+                        {% for err in form.password.errors %}
+                            <p>{{ err }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </p>
+                <p>
+                    {{ form.remember_me() }} {{ form.remember_me.label }}
+                </p>
+                <p>
+                    {{ form.submit() }}
+                </p>
+            </form>
+        </div>
+    </center>
+
+{% endblock %}

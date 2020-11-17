@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <center>
+        <h1>Give me your Feedback</h1>
+        <div id="flash_message">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <form action="/" method="post">
+            {{ form.csrf_token }}
+            <p>
+                {{ form.first_name.label }} <br>
+                {{ form.first_name(size=32) }}
+            </p>
+            <p>
+                {{ form.last_name.label }} <br>
+                {{ form.last_name(size=32) }}
+            </p>
+            <p>
+                {{ form.email.label }} <br>
+                {{ form.email(size=32) }}
+            </p>
+            <p>
+                {{ form.feedback.label }} <br>
+                {{ form.feedback(cols=46, rows=12, id='box') }}
+            </p>
+            <p>
+                {{ form.submit() }}
+            </p>
+        </form>
+    </center>
+{% endblock %}
